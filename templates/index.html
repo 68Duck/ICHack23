@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{url_for('static',filename='homeStyle.css')}}" type="text/css">
+    <title>Home</title>
+  </head>
+  <body>
+    <h1>This is the home page</h1>
+    Enter X: <input type="text" id = "xInput"><br/>
+    Enter Y: <input type="text" id = "yInput"><br/>
+    <a href="/dot">
+        <button onclick="goToDot()">Go To Dot!</button>
+    </a>
+
+    <iframe src="test.pptx" width = "100%", height = "600px">
+    <!-- <iframe src='./test.pptx' width='100%' height='600px' frameborder='0'></iframe> -->
+    <button onclick="printFile()">print file </button>
+
+    <input type="file" id="fileInput">
+    <div id="test"></div>
+    <script src="{{url_for('static',filename='homeApp.js')}}" charset="utf-8"></script>
+
+  </body>
+</html>

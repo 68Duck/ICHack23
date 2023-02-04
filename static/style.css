@@ -1,0 +1,9 @@
+#dot {
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    left var(--left)%;
+    top var(--top)%;
+    
+}
