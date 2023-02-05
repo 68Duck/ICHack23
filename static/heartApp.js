@@ -1,5 +1,6 @@
+updateBarValues()
 
-
+var barYValues = [0, 0, 0, 0, 0]
 // chart = new Chart("myChart", {
 //   type: "line",
 //   data: {
@@ -50,8 +51,6 @@ options: {
 }
 });
 
-var barXValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-var barYValues = [55, 49, 44, 24, 15];
 var barColors = ["red", "green","blue","orange","brown"];
 
 barChart = new Chart("myBarChart", {
@@ -102,16 +101,16 @@ const requestUpdates = async () => {
     //         dataset.data.pop();
     //     })
     // });
-    console.log(chart.data.datasets[0].data)
+    // console.log(chart.data.datasets[0].data)
     array = removeChar(data).slice(0, -1).split(",")
-    console.log(array)
+    // console.log(array)
     var total = 0;
 
     for ( let i = 0; i < array.length; i++ ) {
         total += parseInt(array[i]);
     }
     average = total / array.length
-    console.log(average)
+    // console.log(average)
 
     for (var i = 0; i < 50; i++) {
         chart.data.datasets[0].data.push(parseInt(array[i]))
@@ -128,7 +127,43 @@ const requestUpdates = async () => {
 
     // console.log(chart.data.datasets[0].data)
     chart.update()
+
+    for (var i = 0; i < 50; i++) {
+        yValues[i] = array[i]
+    }
+
+
+    barYValues = updateBarValues()
+
+    barChart.data.datasets[0].data = []
+    for (var i = 0; i < 5; i++){
+        barChart.data.datasets[0].data.push(barYValues[i])
+    }
+    console.log(barYValues)
+    barChart.update()
     
+}
+
+function updateBarValues(){
+    var barYValues = [0, 0, 0, 0, 0]
+    for (var i = 0; i < yValues.length; i++){
+        console.log("test")
+        var value = yValues[i]
+        console.log(value)
+        if (value < 80){
+            barYValues[0] = barYValues[0] + 1
+        } else if (value < 100) {
+            barYValues[1] = barYValues[1] + 1
+        } else if (value < 120) {
+            barYValues[2] = barYValues[2] + 1
+        } else if (value < 160) {
+            barYValues[3] = barYValues[3] + 1
+        } else {
+            barYValues[4] = barYValues[4] + 1
+        }
+    }
+    console.log(barYValues)
+    return barYValues
 }
 
 function randomRange(min, max) {
