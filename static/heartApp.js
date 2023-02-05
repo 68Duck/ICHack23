@@ -1,6 +1,5 @@
-updateBarValues()
 
-var barYValues = [0, 0, 0, 0, 0]
+
 // chart = new Chart("myChart", {
 //   type: "line",
 //   data: {
@@ -53,6 +52,11 @@ options: {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+var barXValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+var barYValues = [55, 49, 44, 24, 15];
+>>>>>>> parent of 0e3360b (Completed bar graph)
 var barColors = ["red", "green","blue","orange","brown"];
 
 barChart = new Chart("myBarChart", {
@@ -107,16 +111,16 @@ const requestUpdates = async () => {
     //         dataset.data.pop();
     //     })
     // });
-    // console.log(chart.data.datasets[0].data)
+    console.log(chart.data.datasets[0].data)
     array = removeChar(data).slice(0, -1).split(",")
-    // console.log(array)
+    console.log(array)
     var total = 0;
 
     for ( let i = 0; i < array.length; i++ ) {
         total += parseInt(array[i]);
     }
     average = total / array.length
-    // console.log(average)
+    console.log(average)
 
     for (var i = 0; i < 50; i++) {
         chart.data.datasets[0].data.push(parseInt(array[i]))
@@ -133,23 +137,10 @@ const requestUpdates = async () => {
 
     // console.log(chart.data.datasets[0].data)
     chart.update()
-
-    for (var i = 0; i < 50; i++) {
-        yValues[i] = array[i]
-    }
-
-
-    barYValues = updateBarValues()
-
-    barChart.data.datasets[0].data = []
-    for (var i = 0; i < 5; i++){
-        barChart.data.datasets[0].data.push(barYValues[i])
-    }
-    console.log(barYValues)
-    barChart.update()
     
 }
 
+<<<<<<< HEAD
 function drawSVG(){
     var svg = d3.select("svg"),
     width = +svg.attr("width"),
@@ -220,6 +211,8 @@ function updateBarValues(){
     return barYValues
 }
 
+=======
+>>>>>>> parent of 0e3360b (Completed bar graph)
 function randomRange(min, max) {
 
 	return Math.floor(Math.random() * (max - min + 1)) + min;
