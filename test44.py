@@ -5,11 +5,48 @@ from flask import g,Flask,render_template,request,make_response
 import requests
 import json
 import threading 
+import sqlite3
+from os import path
 
 import asyncio
 import websockets
 
+
+fileDir = path.dirname(__file__)
 app = Flask(__name__)
+
+DATABASE = 'logins.db'
+
+def get_db():
+    db = getattr(g, '_database', None)
+    if db is None:
+        db = g._database = sqlite3.connect(path.join(fileDir,DATABASE))
+    return db
+
+@app.teardown_appcontext  #closes the database when the file is closed
+def close_connection(exception):
+    db = getattr(g, '_database', None)
+    if db is not None:
+        db.close()
+
+def query_db(query, args=(), one=False):
+    cur = get_db().execute(query, args)
+    rv = cur.fetchall()
+    cur.close()
+    return (rv[0] if rv else None) if one else rv
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+@app.route("/attemptToLogin", methods = ["POST"])
+def attemptToLogin():
+    data = request.get_json()
+    if data is None:
+        pass 
+    else:
+        pass
+
 
 yValues = [60] * 50
 
