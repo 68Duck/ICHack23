@@ -50,13 +50,9 @@ options: {
 }
 });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 var barXValues = ["Italy", "France", "Spain", "USA", "Argentina"];
 var barYValues = [55, 49, 44, 24, 15];
->>>>>>> parent of 0e3360b (Completed bar graph)
 var barColors = ["red", "green","blue","orange","brown"];
 
 barChart = new Chart("myBarChart", {
@@ -77,10 +73,6 @@ barChart = new Chart("myBarChart", {
     }
   });
 
-=======
->>>>>>> parent of 0bfdbdb (Second round with start of bar graph)
-=======
->>>>>>> parent of 0bfdbdb (Second round with start of bar graph)
 
 function sendHeartRate(){
     sendHRT(randomRange(50,150));
@@ -140,7 +132,6 @@ const requestUpdates = async () => {
     
 }
 
-<<<<<<< HEAD
 function drawSVG(){
     var svg = d3.select("svg"),
     width = +svg.attr("width"),
@@ -211,8 +202,6 @@ function updateBarValues(){
     return barYValues
 }
 
-=======
->>>>>>> parent of 0e3360b (Completed bar graph)
 function randomRange(min, max) {
 
 	return Math.floor(Math.random() * (max - min + 1)) + min;
