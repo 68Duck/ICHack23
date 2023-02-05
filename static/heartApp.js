@@ -51,6 +51,7 @@ options: {
 }
 });
 
+<<<<<<< HEAD
 var barColors = ["red", "green","blue","orange","brown"];
 
 barChart = new Chart("myBarChart", {
@@ -71,6 +72,8 @@ barChart = new Chart("myBarChart", {
     }
   });
 
+=======
+>>>>>>> parent of 0bfdbdb (Second round with start of bar graph)
 
 function sendHeartRate(){
     sendHRT(randomRange(50,150));

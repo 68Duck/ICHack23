@@ -35,13 +35,6 @@ def getInfo():
     return ("nothing")
 
 
-@app.route("/home")
-def home():
-    global yValues
-    xValues = list(range(51))
-    return render_template("heartRate.html", xValues = xValues, yValues = yValues)
-
-
 @app.route("/requestUpdate", methods=["POST"])
 def requestUpdate():
     global yValues
