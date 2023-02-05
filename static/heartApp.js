@@ -50,6 +50,28 @@ options: {
 }
 });
 
+var barXValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+var barYValues = [55, 49, 44, 24, 15];
+var barColors = ["red", "green","blue","orange","brown"];
+
+barChart = new Chart("myBarChart", {
+    type: "bar",
+    data: {
+      labels: barXValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: barYValues
+      }]
+    },
+    options: {
+      legend: {display: false},
+      title: {
+        display: true,
+        text: "Bar chart"
+      }
+    }
+  });
+
 
 function sendHeartRate(){
     sendHRT(randomRange(50,150));

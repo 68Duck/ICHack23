@@ -49,7 +49,7 @@ def handle(res):
        
         # print(newRate)
         # yValues = yValues[1:len(yValues)]
-        # yValues.append(newRate)
+        # yValues.append(newRate)x
 
 def getAuth():
     dev_id = "ichack23-dev-3R8k93a9x3"
@@ -58,7 +58,7 @@ def getAuth():
     headers = {
         "dev-id": dev_id,
         "x-api-key": api_key
-    }
+    } 
 
     response = requests.post("https://ws.tryterra.co/auth/developer", headers=headers)
 
