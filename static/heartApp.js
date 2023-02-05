@@ -1,34 +1,18 @@
 var barYValues = [0, 0, 0, 0, 0]
 
-// chart = new Chart("myChart", {
-//   type: "line",
-//   data: {
-//     labels: xValues,
-//     datasets: [{
-//       fill: false,
-//       lineTension: 0,
-//       backgroundColor: "rgba(0,0,255,1.0)",
-//       borderColor: "rgba(0,0,255,0.1)",
-//       data: yValues
-//     }]
-//   },
-//   data: {
-//     labels: xValues,
-//     datasets: [{
-//       fill: false,
-//       lineTension: 0,
-//       backgroundColor: "rgba(0,255,0,1.0)",
-//       borderColor: "rgba(0,0,255,0.1)",
-//       data: yValues
-//     }]
-//   },
-//   options: {
-//     legend: {display: false},
-//     scales: {
-//       yAxes: [{ticks: {min: 45, max:200}}],
-//     }
-//   }
-// });
+var canvas = document.getElementById("canvas")
+var ctx = canvas.getContext("2d")
+var size = 60; 
+
+ctx.beginPath();
+ctx.arc(250, 250, size * 2, 0, 2 * Math.PI);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.moveTo(250, 250 - 60);
+
+var counter = 0
+
 
 chart = new Chart("myChart", {
 type: "line",
@@ -100,16 +84,16 @@ const requestUpdates = async () => {
     //         dataset.data.pop();
     //     })
     // });
-    console.log(chart.data.datasets[0].data)
+    // console.log(chart.data.datasets[0].data)
     array = removeChar(data).slice(0, -1).split(",")
-    console.log(array)
+    // console.log(array)
     var total = 0;
 
     for ( let i = 0; i < array.length; i++ ) {
         total += parseInt(array[i]);
     }
     average = total / array.length
-    console.log(average)
+    // console.log(average)
 
     for (var i = 0; i < 50; i++) {
         chart.data.datasets[0].data.push(parseInt(array[i]))
@@ -138,8 +122,15 @@ const requestUpdates = async () => {
     for (var i = 0; i < 5; i++){
         barChart.data.datasets[0].data.push(barYValues[i])
     }
-    console.log(barYValues)
+    // console.log(barYValues)
     barChart.update()
+
+
+    counter = (counter + 1) % 50
+    console.log(250 + array[49] * Math.cos(Math.PI/2 - Math.PI/25 * counter))
+    console.log(250 - array[49] * Math.sin(Math.PI/2 - Math.PI/25 * counter))
+    ctx.lineTo(250 + array[49] * Math.cos(Math.PI/2 - Math.PI/25 * counter), 250 - array[49] * Math.sin(Math.PI/2 - Math.PI/25 * counter));
+    ctx.stroke();
     
 }
 
@@ -148,9 +139,9 @@ const requestUpdates = async () => {
 function updateBarValues(){
     var barYValues = [0, 0, 0, 0, 0]
     for (var i = 0; i < yValues.length; i++){
-        console.log("test")
+        // console.log("test")
         var value = yValues[i]
-        console.log(value)
+        // console.log(value)
         if (value < 80){
             barYValues[0] = barYValues[0] + 1
         } else if (value < 100) {
@@ -163,7 +154,7 @@ function updateBarValues(){
             barYValues[4] = barYValues[4] + 1
         }
     }
-    console.log(barYValues)
+    // console.log(barYValues)
     return barYValues
 }
 
