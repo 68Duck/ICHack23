@@ -4,15 +4,7 @@ var canvas = document.getElementById("canvas")
 var ctx = canvas.getContext("2d")
 var size = 60; 
 
-ctx.beginPath();
-ctx.arc(250, 250, size * 2, 0, 2 * Math.PI);
-ctx.stroke();
-
-ctx.beginPath();
-ctx.moveTo(250, 250 - 60);
-
 var counter = 0
-
 
 chart = new Chart("myChart", {
 type: "line",
@@ -125,12 +117,31 @@ const requestUpdates = async () => {
     // console.log(barYValues)
     barChart.update()
 
+    if (average < array[49]){
+        ctx.strokeStyle = "Red";
+    } else {
+        ctx.strokeStyle = "Green";
+    }
 
-    counter = (counter + 1) % 50
-    console.log(250 + array[49] * Math.cos(Math.PI/2 - Math.PI/25 * counter))
-    console.log(250 - array[49] * Math.sin(Math.PI/2 - Math.PI/25 * counter))
-    ctx.lineTo(250 + array[49] * Math.cos(Math.PI/2 - Math.PI/25 * counter), 250 - array[49] * Math.sin(Math.PI/2 - Math.PI/25 * counter));
+    var sizeFactor = 1.8;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    ctx.beginPath();
+    ctx.arc(250, 250, average*sizeFactor, 0, 2 * Math.PI);
     ctx.stroke();
+
+
+
+    ctx.beginPath();
+    ctx.moveTo(250, 250 - 60);
+    for (var i = 0; i < 51; i++){
+        // console.log(250 + array[49] * Math.cos(Math.PI/2 - Math.PI/25 * counter))
+        // console.log(250 - array[49] * Math.sin(Math.PI/2 - Math.PI/25 * counter))
+        // ctx.lineTo(250 + array[i] * Math.cos(Math.PI/2 - Math.PI/25 * i), 250 - array[i] * Math.sin(Math.PI/2 - Math.PI/25 * i));
+        ctx.lineTo(250 + sizeFactor*array[i] * Math.cos(Math.PI/2 - Math.PI/25 * i), 250 - sizeFactor*array[i] * Math.sin(Math.PI/2 - Math.PI/25 * i));
+        ctx.stroke();
+    }
+
     
 }
 
