@@ -40,12 +40,12 @@ def requestUpdate():
     global yValues
     return yValues
 
-# @app.route("/")
-# def homePage():
-#     global yValues
-#     xValues = list(range(51))
+@app.route("/home")
+def homePage():
+    global yValues
+    xValues = list(range(51))
     
-#     return render_template("heartRate.html", xValues = xValues, yValues = yValues)
+    return render_template("heartRate.html", xValues = xValues, yValues = yValues)
 
 
 

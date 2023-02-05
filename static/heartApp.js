@@ -1,4 +1,4 @@
-
+var barYValues = [0, 0, 0, 0, 0]
 
 // chart = new Chart("myChart", {
 //   type: "line",
@@ -50,9 +50,6 @@ options: {
 }
 });
 
-
-var barXValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-var barYValues = [55, 49, 44, 24, 15];
 var barColors = ["red", "green","blue","orange","brown"];
 
 barChart = new Chart("myBarChart", {
@@ -129,54 +126,22 @@ const requestUpdates = async () => {
 
     // console.log(chart.data.datasets[0].data)
     chart.update()
+
+    for (var i = 0; i < 50; i++) {
+        yValues[i] = array[i]
+    }
+
+
+    barYValues = updateBarValues()
+
+    barChart.data.datasets[0].data = []
+    for (var i = 0; i < 5; i++){
+        barChart.data.datasets[0].data.push(barYValues[i])
+    }
+    console.log(barYValues)
+    barChart.update()
     
 }
-
-function drawSVG(){
-    var svg = d3.select("svg"),
-    width = +svg.attr("width"),
-    height = +svg.attr("height"),
-    r = Math.min(width, height) / 2,
-    g = svg
-            .append("g")
-            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-    
-    // Define the data to plot
-    var dataDicts = [];
-    for (var i = 0; i < 40, i++;) {
-    dataDicts.push({"angle": (i + 1) * 9, "value": 60})
-    }
-    var newData;
-    for (var counter = 0; counter++;) {
-      // Scale the data values to a radial axis
-      var angle = d3.scaleLinear()
-              .domain([0, 360])
-              .range([0, 2 * Math.PI]);
-      var radius = d3.scaleLinear()
-              .domain([0, 100])
-              .range([0, r]);
-
-      // Define the line generator
-      var line = d3.lineRadial()
-              .angle(function (d) {
-                return angle(d.angle);
-              })
-              .radius(function (d) {
-                return radius(d.value);
-              });
-
-      // Plot the data
-      g.append("path")
-              .datum(data)
-              .attr("d", line)
-              .attr("fill", "none")
-              .attr("stroke", "blue");
-      newData = data[data.length - 1]
-      data[counter % 15]["value"] = newData
-    }
-  }
-
-drawSVG()
 
 
 
