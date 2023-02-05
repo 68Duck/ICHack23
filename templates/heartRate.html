@@ -7,6 +7,8 @@
 
 <canvas id="myBarChart" style="width:100%;max-width:600px"></canvas>
 
+<svg width="500" height="500"></svg>
+
 <button onclick="sendHeartRate()">Send heart rate</button>
 
 <script>
@@ -19,5 +21,6 @@ var inputYValues = {{yValues}}
 </script>
 
 <script src="{{url_for('static',filename='heartApp.js')}}" charset="utf-8"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
 </body>
 </html>
